@@ -20,7 +20,7 @@ A high-fidelity Multi-Agent Business Intelligence system designed to orchestrate
 - **Frontend:** Streamlit (Custom CSS Architecture)
 - **Data:** Python Pandas & Logic Guards
 
-##  Future Roadmap
+## 📈 Future Roadmap
 - [ ] Integration with real-time SQL databases.
 - [ ] Multi-format export (PDF/Excel).
 - [ ] Voice-activated research queries.
