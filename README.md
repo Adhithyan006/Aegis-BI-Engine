@@ -20,7 +20,7 @@
 
 *Autonomous Multi-Agent Intelligence Pipeline*
 
-*From Raw Market Signal to Power BI-Ready Structured Data — Zero Human Latency*
+*From Raw Market Signal to Power BI-Ready Structured Data - Zero Human Latency*
 
 ---
 
@@ -34,7 +34,7 @@
 ---
 
 *"Strategic question in. Production-grade structured intelligence out.*
-*Fully orchestrated by autonomous AI agents — zero manual intervention, zero latency."*
+*Fully orchestrated by autonomous AI agents - zero manual intervention, zero latency."*
 
 </div>
 
@@ -44,15 +44,15 @@
 
 ## The Intelligence Preparation Crisis
 
-Enterprise business intelligence is structurally broken at the preparation layer. Organizations hemorrhage 70–80% of their total analytics bandwidth on data gathering, source validation, unstructured-to-structured conversion, and schema normalization — before a single visualization ever renders. This preparation overhead transforms BI from a proactive competitive weapon into a perpetually lagging, reactive output.
+Enterprise business intelligence is structurally broken at the preparation layer. Organizations hemorrhage 70–80% of their total analytics bandwidth on data gathering, source validation, unstructured-to-structured conversion, and schema normalization - before a single visualization ever renders. This preparation overhead transforms BI from a proactive competitive weapon into a perpetually lagging, reactive output.
 
 The dysfunction compounds across three structural failure modes:
 
-**Research Fragmentation** — Analysts manually aggregate intelligence from heterogeneous, disconnected sources: market reports, competitor filings, industry databases, regulatory repositories. Each analyst operates with idiosyncratic sourcing methodology, producing non-reproducible, inconsistency-riddled outputs where data quality is analyst-dependent and structurally unpredictable.
+**Research Fragmentation** - Analysts manually aggregate intelligence from heterogeneous, disconnected sources: market reports, competitor filings, industry databases, regulatory repositories. Each analyst operates with idiosyncratic sourcing methodology, producing non-reproducible, inconsistency-riddled outputs where data quality is analyst-dependent and structurally unpredictable.
 
-**Unstructured-to-Structured Conversion Tax** — Raw research artifacts (PDFs, articles, briefs) demand exhaustive manual transformation into tabular formats suitable for BI ingestion. This labor-intensive restructuring introduces transcription errors, format drift, and multi-day delays. Skilled analyst cognition is consumed by mechanical data manipulation rather than strategic interpretation.
+**Unstructured-to-Structured Conversion Tax** - Raw research artifacts (PDFs, articles, briefs) demand exhaustive manual transformation into tabular formats suitable for BI ingestion. This labor-intensive restructuring introduces transcription errors, format drift, and multi-day delays. Skilled analyst cognition is consumed by mechanical data manipulation rather than strategic interpretation.
 
-**Dashboard Integration Friction** — Post-structuring, data still requires iterative cleansing, schema normalization, and type alignment before Power BI accepts it cleanly. Encoding anomalies and version mismatches generate compounding iteration cycles that further extend time-to-insight latency.
+**Dashboard Integration Friction** - Post-structuring, data still requires iterative cleansing, schema normalization, and type alignment before Power BI accepts it cleanly. Encoding anomalies and version mismatches generate compounding iteration cycles that further extend time-to-insight latency.
 
 **AEGIS eliminates this entire preparation overhead.** Strategic question to dashboard-ready structured data in minutes. Zero manual research. Zero data wrangling. Zero format conversion. Pure autonomous intelligence at machine velocity.
 
@@ -77,7 +77,7 @@ The dysfunction compounds across three structural failure modes:
   │                                                                         │
   └─────────────────────────────────────────────────────────────────────────┘
 
-  Input  :  Any natural language market or research topic — no structure required
+  Input  :  Any natural language market or research topic - no structure required
   Output :  Clean, normalized, schema-optimized CSV — directly importable into Power BI
   Human touches required  :  One  (initial topic input)
   Execution time          :  Minutes
@@ -183,7 +183,7 @@ The dysfunction compounds across three structural failure modes:
 
 ### Why Groq Accelerates This Architecture
 
-AEGIS leverages Groq's LPU (Language Processing Unit) inference infrastructure running LLaMA 3.3-70B-Versatile — delivering sub-second token generation that makes the multi-agent pipeline feel instantaneous. Where standard cloud LLM backends stall on inference latency and disrupt agentic flow, AEGIS executes research and analysis phases at machine velocity while maintaining enterprise-grade reasoning depth.
+AEGIS leverages Groq's LPU (Language Processing Unit) inference infrastructure running LLaMA 3.3-70B-Versatile - delivering sub-second token generation that makes the multi-agent pipeline feel instantaneous. Where standard cloud LLM backends stall on inference latency and disrupt agentic flow, AEGIS executes research and analysis phases at machine velocity while maintaining enterprise-grade reasoning depth.
 
 ```
   Inference Velocity Comparison
@@ -204,9 +204,9 @@ AEGIS leverages Groq's LPU (Language Processing Unit) inference infrastructure r
 
 ## Agent Specification
 
-### Researcher Agent — Autonomous Intelligence Acquisition
+### Researcher Agent - Autonomous Intelligence Acquisition
 
-The Researcher Agent operates as a fully autonomous investigative intelligence unit. It receives only a topic specification and independently determines every dimension of research strategy and execution — no step-by-step prompting, no guided paths, no human supervision between initiation and output.
+The Researcher Agent operates as a fully autonomous investigative intelligence unit. It receives only a topic specification and independently determines every dimension of research strategy and execution - no step-by-step prompting, no guided paths, no human supervision between initiation and output.
 
 ```
   RESEARCHER AGENT — CAPABILITY ARCHITECTURE
@@ -228,15 +228,15 @@ Distinguishing characteristics that separate this agent from naive retrieval sys
 
 - Independently identifies optimal source categories per topic domain
 - Self-corrects when initial sources prove insufficient or contradictory
-- Generates strategic implications and insights — not mere information aggregation
+- Generates strategic implications and insights - not mere information aggregation
 - Applies dynamic credibility weighting across academic, industry, and market sources
-- Operates at full autonomy — zero intermediate intervention required
+- Operates at full autonomy - zero intermediate intervention required
 
 <br/>
 
-### Analyst Agent — Structured Data Engineering
+### Analyst Agent - Structured Data Engineering
 
-The Analyst Agent transforms unstructured research intelligence into production-grade tabular datasets precision-engineered for business intelligence tooling — autonomously architecting schemas that require zero post-processing before Power BI ingestion.
+The Analyst Agent transforms unstructured research intelligence into production-grade tabular datasets precision-engineered for business intelligence tooling - autonomously architecting schemas that require zero post-processing before Power BI ingestion.
 
 ```
   ANALYST AGENT — DATA ENGINEERING PIPELINE
@@ -318,14 +318,14 @@ Schema engineering principles the Analyst Agent enforces autonomously:
 
 ### Installation
 
-**Step 1 — Clone the repository**
+**Step 1 - Clone the repository**
 
 ```bash
 git clone https://github.com/Adhithyan006/Aegis-BI-Engine.git
 cd Aegis-BI-Engine
 ```
 
-**Step 2 — Create and activate virtual environment**
+**Step 2 - Create and activate virtual environment**
 
 ```bash
 # Windows PowerShell
@@ -341,13 +341,13 @@ python -m venv venv
 source venv/bin/activate
 ```
 
-**Step 3 — Install dependencies**
+**Step 3 - Install dependencies**
 
 ```bash
 pip install -r requirements.txt
 ```
 
-**Step 4 — Configure environment**
+**Step 4 - Configure environment**
 
 Create a `.env` file in the project root:
 
@@ -355,7 +355,7 @@ Create a `.env` file in the project root:
 GROQ_API_KEY=your_groq_api_key_here
 ```
 
-**Step 5 — Execute the engine**
+**Step 5 - Execute the engine**
 
 ```bash
 python main.py
@@ -391,8 +391,8 @@ The engine autonomously executes all pipeline stages and delivers structured CSV
 ```
   Focused market     :  "Electric vehicle battery market in Southeast Asia"
   Competitive intel  :  "Enterprise cloud infrastructure AWS Azure GCP dynamics"
-  Technology scan    :  "Large language model deployment frameworks — adoption and maturity"
-  Strategic entry    :  "Renewable energy storage technologies — cost trajectory and scale"
+  Technology scan    :  "Large language model deployment frameworks - adoption and maturity"
+  Strategic entry    :  "Renewable energy storage technologies - cost trajectory and scale"
   Sector analysis    :  "B2B SaaS vertical expansion strategies in emerging markets"
 ```
 
@@ -641,7 +641,7 @@ Convert standing market monitoring topics into recurring autonomous intelligence
 
 ### Model Parameters
 
-AEGIS is production-configured on Groq LLaMA 3.3-70B-Versatile — the optimal configuration for deep multi-agent research workflows at machine inference velocity:
+AEGIS is production-configured on Groq LLaMA 3.3-70B-Versatile - the optimal configuration for deep multi-agent research workflows at machine inference velocity:
 
 ```python
 # app.py — production configuration
@@ -670,7 +670,7 @@ analyst.goal += " Design schemas optimized for time-series trend analysis."
 
 ```env
 VERBOSE=True     # Full agent deliberation visible in console
-VERBOSE=False    # Minimal output — final results only
+VERBOSE=False    # Minimal output - final results only
 ```
 
 <br/>
@@ -758,7 +758,7 @@ Open source to accelerate enterprise adoption of autonomous intelligence pipelin
   ╚══════════════════════════════════════════════════════════════════╝
 ```
 
-**Built by Adhithyan — GitHub: @Adhithyan006**
+**Built by Adhithyan - GitHub: @Adhithyan006**
 
 *Star this repository to help engineers worldwide discover autonomous BI infrastructure*
 
