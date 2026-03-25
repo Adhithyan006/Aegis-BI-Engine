@@ -1,19 +1,19 @@
 <div align="center">
 
 ```
-      ___       _______   _______  __   _______.
-     /   \     |   ____| /  _____||  | /       |
-    /  ^  \    |  |__   |  |  __  |  ||   (----`
-   /  /_\  \   |   __|  |  | |_ | |  | \   \
-  /  _____  \  |  |____ |  |__| | |  | .----)  |
- /__/     \__\ |_______| \______| |__| |_______/
+            ___       _______   _______  __   _______.
+           /   \     |   ____| /  _____||  | /       |
+          /  ^  \    |  |__   |  |  __  |  ||   (----`
+     /  /_\  \   |   __|  |  | |_ | |  | \   \
+        /  _____  \  |  |____ |  |__| | |  | .----)  |
+       /__/     \__\ |_______| \______| |__| |_______/
 
-  ██████╗ ██╗    ███████╗███╗   ██╗ ██████╗ ██╗███╗   ██╗███████╗
-  ██╔══██╗██║    ██╔════╝████╗  ██║██╔════╝ ██║████╗  ██║██╔════╝
-  ██████╔╝██║    █████╗  ██╔██╗ ██║██║  ███╗██║██╔██╗ ██║█████╗
-  ██╔══██╗██║    ██╔══╝  ██║╚██╗██║██║   ██║██║██║╚██╗██║██╔══╝
-  ██████╔╝██║    ███████╗██║ ╚████║╚██████╔╝██║██║ ╚████║███████╗
-  ╚═════╝ ╚═╝    ╚══════╝╚═╝  ╚═══╝ ╚═════╝ ╚═╝╚═╝  ╚═══╝╚══════╝
+        ██████╗ ██╗    ███████╗███╗   ██╗ ██████╗ ██╗███╗   ██╗███████╗
+        ██╔══██╗██║    ██╔════╝████╗  ██║██╔════╝ ██║████╗  ██║██╔════╝
+      ██████╔╝██║    █████╗  ██╔██╗ ██║██║  ███╗██║██╔██╗ ██║█████╗
+      ██╔══██╗██║    ██╔══╝  ██║╚██╗██║██║   ██║██║██║╚██╗██║██╔══╝
+        ██████╔╝██║    ███████╗██║ ╚████║╚██████╔╝██║██║ ╚████║███████╗
+        ╚═════╝ ╚═╝    ╚══════╝╚═╝  ╚═══╝ ╚═════╝ ╚═╝╚═╝  ╚═══╝╚══════╝
 ```
 
 **AEGIS BI ENGINE**
@@ -44,7 +44,7 @@
 
 ## The Intelligence Preparation Crisis
 
-Enterprise business intelligence is structurally broken at the preparation layer. Organizations hemorrhage 70–80% of their total analytics bandwidth on data gathering, source validation, unstructured-to-structured conversion, and schema normalization - before a single visualization ever renders. This preparation overhead transforms BI from a proactive competitive weapon into a perpetually lagging, reactive output.
+Enterprise business intelligence is structurally broken at the preparation layer. Organizations hemorrhage 70-80% of their total analytics bandwidth on data gathering, source validation, unstructured-to-structured conversion, and schema normalization - before a single visualization ever renders. This preparation overhead transforms BI from a proactive competitive weapon into a perpetually lagging, reactive output.
 
 The dysfunction compounds across three structural failure modes:
 
@@ -78,7 +78,7 @@ The dysfunction compounds across three structural failure modes:
   └─────────────────────────────────────────────────────────────────────────┘
 
   Input  :  Any natural language market or research topic - no structure required
-  Output :  Clean, normalized, schema-optimized CSV — directly importable into Power BI
+  Output :  Clean, normalized, schema-optimized CSV - directly importable into Power BI
   Human touches required  :  One  (initial topic input)
   Execution time          :  Minutes
   Manual data wrangling   :  None
@@ -106,13 +106,13 @@ The dysfunction compounds across three structural failure modes:
   ║           ┌────────────────┴────────────────┐                         ║
   ║           │                                 │                         ║
   ║   ┌───────┴────────────┐         ┌──────────┴─────────────┐           ║
-  ║   │  RESEARCHER AGENT  │         │    ANALYST AGENT        │          ║
-  ║   │                    │         │                         │          ║
-  ║   │ Autonomous invest. │ ──────► │ Schema architecture     │          ║
-  ║   │ Multi-src synthesis│         │ Pattern extraction      │          ║
-  ║   │ Credibility valid. │         │ Data normalization      │          ║
-  ║   │ Strategic insights │         │ CSV engineering         │          ║
-  ║   │ Self-correct logic │         │ Quality validation      │          ║
+  ║   │  RESEARCHER AGENT  │         │    ANALYST AGENT       │           ║
+  ║   │                    │         │                        │           ║
+  ║   │ Autonomous invest. │ ──────► │ Schema architecture    │           ║
+  ║   │ Multi-src synthesis│         │ Pattern extraction     │           ║
+  ║   │ Credibility valid. │         │ Data normalization     │           ║
+  ║   │ Strategic insights │         │ CSV engineering        │           ║
+  ║   │ Self-correct logic │         │ Quality validation     │           ║
   ║   └───────┬────────────┘         └──────────┬─────────────┘           ║
   ║           │                                 │                         ║
   ║           └────────────────┬────────────────┘                         ║
@@ -140,7 +140,7 @@ The dysfunction compounds across three structural failure modes:
         │
         ▼
   ┌─────────────────────────────────────┐
-  │        CrewAI Orchestrator          │
+  │         CrewAI Orchestrator         │
   │  Task delegation                    │
   │  Sequential execution control       │
   │  Error recovery and retry logic     │
@@ -372,7 +372,7 @@ python main.py
 ### Direct Pipeline Execution
 
 ```python
-# main.py — configure your research topic
+# main.py - configure your research topic
 topic = "Global generative AI infrastructure market competitive dynamics 2025"
 
 crew.kickoff(inputs={"topic": topic})
@@ -469,7 +469,7 @@ Schema characteristics the Analyst Agent enforces autonomously:
         │
         ▼
   Power Query preview renders instantly
-  Data is clean — zero transformation steps required
+  Data is clean - zero transformation steps required
         │
         ▼
   Click Load
@@ -480,7 +480,7 @@ Schema characteristics the Analyst Agent enforces autonomously:
 
 Total manual intervention: file selection only. No schema modification, type casting, or data cleansing required before visualization begins.
 
-**On dashboard automation:** AEGIS owns the entire intelligence pipeline through structured data delivery. Dashboard construction in Power BI Desktop remains a manual creative process — visual selection, layout architecture, and interactive filter design require human analytical judgment. Full end-to-end automation from data to published dashboard requires Power BI Premium licensing and the Power BI REST API, which Microsoft restricts to enterprise licensing tiers and does not expose on standard individual accounts.
+**On dashboard automation:** AEGIS owns the entire intelligence pipeline through structured data delivery. Dashboard construction in Power BI Desktop remains a manual creative process - visual selection, layout architecture, and interactive filter design require human analytical judgment. Full end-to-end automation from data to published dashboard requires Power BI Premium licensing and the Power BI REST API, which Microsoft restricts to enterprise licensing tiers and does not expose on standard individual accounts.
 
 <br/>
 
@@ -536,7 +536,7 @@ Total manual intervention: file selection only. No schema modification, type cas
 
 <div align="center">
 
-### AEGIS BI Engine — Live Execution
+### AEGIS BI Engine - Live Execution
 
 *Watch autonomous agents execute the complete research-to-structured-data pipeline in real time*
 
@@ -554,7 +554,8 @@ Total manual intervention: file selection only. No schema modification, type cas
 **Watch the full execution walkthrough:**
 
 ```
-  https://drive.google.com/file/d/1OFE-7rCSHXr7AXO6XoiQJDa2WvEPygXg/view
+Copy link and open in browser: https://drive.google.com/file/d/1OFE-7rCSHXr7AXO6XoiQJDa2WvEPygXg/view
+
 ```
 
 <br/>
@@ -629,7 +630,7 @@ Research compliance requirements across jurisdictions, map policy evolution time
 
 ### Executive Intelligence Briefings
 
-Convert standing market monitoring topics into recurring autonomous intelligence runs. Deliver structured, dashboard-ready briefing data on demand — without allocating analyst bandwidth to preparation overhead.
+Convert standing market monitoring topics into recurring autonomous intelligence runs. Deliver structured, dashboard-ready briefing data on demand - without allocating analyst bandwidth to preparation overhead.
 
 <br/>
 
@@ -734,7 +735,7 @@ Open a Pull Request with a complete end-to-end execution output sample attached.
 
 ## License
 
-MIT License — Full terms in repository LICENSE file.
+MIT License - Full terms in repository LICENSE file.
 
 Open source to accelerate enterprise adoption of autonomous intelligence pipelines. Free for commercial and academic use with attribution.
 
