@@ -2,6 +2,7 @@ import streamlit as st
 import os
 import pandas as pd
 import re
+import plotly.express as px
 from io import StringIO
 from dotenv import load_dotenv
 from crewai import Agent, Task, Crew, Process, LLM
@@ -11,7 +12,7 @@ load_dotenv()
 engine_llm = LLM(
     model="groq/llama-3.3-70b-versatile", 
     api_key=os.getenv("GROQ_API_KEY"),
-    temperature=0.0
+    temperature=0.1
 )
 
 st.set_page_config(page_title="Aegis BI | Elite Engine", layout="wide")
@@ -23,7 +24,6 @@ st.markdown("""
     h1 { color: #5D4037 !important; font-family: 'Segoe UI', sans-serif; font-weight: 800; font-size: 28px !important; }
     h2 { color: #8B4513 !important; font-family: 'Segoe UI', sans-serif; font-weight: 700; font-size: 22px !important; margin-bottom: 10px; }
     .insight-card { background-color: #FFF9F0; padding: 20px; border-left: 5px solid #D4AF37; border-top: 1px solid #E5D3B3; margin-bottom: 20px; font-weight: 500; font-size: 15px; color: #5D4037; line-height: 1.8; }
-    
     .stButton>button { 
         background-color: #D4AF37 !important; 
         color: #FFFFFF !important; 
@@ -33,16 +33,15 @@ st.markdown("""
         border: none;
         transition: all 0.3s ease-in-out !important;
     }
-    
     .stButton>button:hover { 
         background-color: #8B4513 !important; 
         color: #FDF5E6 !important;
         box-shadow: 0px 4px 15px rgba(212, 175, 55, 0.4);
         border: 1px solid #D4AF37 !important;
     }
-
     .sidebar-text { font-size: 14px; font-weight: 700; color: #8B4513; margin-top: 25px; margin-bottom: 10px; }
     hr { border: 0; height: 1px; background-image: linear-gradient(to right, rgba(212, 175, 55, 0), rgba(212, 175, 55, 0.75), rgba(212, 175, 55, 0)); margin: 20px 0; }
+    .metric-box { background-color: #FFF9F0; padding: 15px; border-radius: 8px; border-left: 4px solid #D4AF37; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
     </style>
     """, unsafe_allow_html=True)
 
@@ -68,19 +67,20 @@ if st.session_state.page == "MAIN":
                 try:
                     master_agent = Agent(
                         role='Elite BI Data Architect',
-                        goal=f'Provide 4 brief bullet points followed by a 40-row dataset for {query}.',
-                        backstory='Senior Architect at Zoho. You never omit the strategic insights. You deliver professional, brief bullet points before the data marker.',
+                        goal=f'Provide 4 brief bullet points followed by a dense, un-truncated 40-row dataset for {query}.',
+                        backstory='Senior Architect at Zoho. You are a master of raw data generation. You never use ellipses or truncate rows. You explicitly print all 40 unique data rows sequentially without adding icons or emojis.',
                         llm=engine_llm
                     )
 
                     t1 = Task(
-                        description=f'''Mandatory Sequence for {query}:
-                        1. Write exactly 4 brief, one-line bullet points (no emojis).
-                        2. Write the separator ###DATA### on its own line.
-                        3. Provide the 40-row CSV (Category, Entity_Name, Metric, Investment_Cr, Growth_Rate_%).
+                        description=f'''Mandatory Execution for {query}:
+                        1. Provide exactly 4 concise, high-level business analytics observations without any special icons or emojis.
+                        2. Print the exact separator token: ###DATA###
+                        3. Generate exactly 40 distinct, comprehensive rows of valid CSV data. 
                         
-                        Strictly follow the order: Insights FIRST, then Marker, then CSV.''',
-                        expected_output='Brief bullet points followed by marker and CSV.',
+                        Columns: Category, Entity_Name, Metric, Investment_Cr, Growth_Rate_%
+                        Ensure Entity_Name contains 40 explicit, non-duplicated operational entries matching the geography or scope of {query}. Do not summarize or stop early.''',
+                        expected_output='Brief observations followed by marker and a complete 40-row CSV table.',
                         agent=master_agent
                     )
 
@@ -98,8 +98,8 @@ if st.session_state.page == "MAIN":
                         if "Tamil Nadu" in query or "TN" in query:
                             df = df[~df['Entity_Name'].str.contains('Thiruvananthapuram|Kochi|Kerala|Bangalore|Hyderabad', case=False, na=False)]
                         
-                        df = df.drop_duplicates(subset=['Entity_Name']).head(40)
-                        df['Investment_Cr'] = pd.to_numeric(df['Investment_Cr'], errors='coerce').abs().fillna(1500)
+                        df['Investment_Cr'] = pd.to_numeric(df['Investment_Cr'], errors='coerce').abs().fillna(120)
+                        df['Growth_Rate_%'] = pd.to_numeric(df['Growth_Rate_%'], errors='coerce').fillna(10.5)
                         df['Category'] = df['Category'].str.strip()
                         df = df.sort_values(by='Category', ascending=False)
                         
@@ -111,16 +111,72 @@ if st.session_state.page == "MAIN":
                         st.session_state.page = query
                         st.rerun()
                     else:
-                        st.error("Sequence Error. Retrying...")
+                        st.error("Sequence Marker Missing. Retrying pipeline...")
                 except Exception as e:
                     st.error(f"Engine Log: {e}")
 else:
     data = st.session_state.vault[st.session_state.page]
     st.markdown(f"<h2>REPORT: {st.session_state.page.upper()}</h2>", unsafe_allow_html=True)
     
-    if data['insights']:
-        st.markdown('<div class="insight-card">' + data['insights'] + '</div>', unsafe_allow_html=True)
+    df = data['df']
     
-    st.markdown("<h3 style='color: #8B4513;'>MASTER POWER BI DATASET</h3>", unsafe_allow_html=True)
-    st.dataframe(data['df'], use_container_width=True, hide_index=True)
-    st.download_button(label="DOWNLOAD LOAD-READY CSV", data=data['df'].to_csv(index=False), file_name=f"aegis_master.csv", mime="text/csv")
+    st.markdown("<h2 style='color: #8B4513;'>INTERACTIVE POWER DASHBOARD</h2>", unsafe_allow_html=True)
+    
+    c_layout1, c_layout2 = st.columns(2)
+    with c_layout1:
+        fig_bar = px.bar(
+            df, x="Entity_Name", y="Investment_Cr",
+            color="Category", title="Capital Architecture Deployment Map",
+            color_discrete_sequence=px.colors.sequential.YlOrBr
+        )
+        fig_bar.update_layout(plot_bgcolor="rgba(0,0,0,0)", paper_bgcolor="rgba(0,0,0,0)")
+        st.plotly_chart(fig_bar, use_container_width=True)
+        
+        df_line = df.sort_values(by="Growth_Rate_%")
+        fig_line = px.line(
+            df_line, x="Entity_Name", y="Growth_Rate_%",
+            title="Growth Velocity Horizon Trend Analysis",
+            markers=True, color_discrete_sequence=["#8B4513"]
+        )
+        fig_line.update_layout(plot_bgcolor="rgba(0,0,0,0)", paper_bgcolor="rgba(0,0,0,0)")
+        st.plotly_chart(fig_line, use_container_width=True)
+        
+    with c_layout2:
+        fig_pie = px.pie(
+            df, names="Category", values="Investment_Cr",
+            title="Resource Distribution Allocation Profile",
+            hole=0.4, color_discrete_sequence=px.colors.sequential.YlOrRd
+        )
+        st.plotly_chart(fig_pie, use_container_width=True)
+        
+        fig_scatter = px.scatter(
+            df, x="Investment_Cr", y="Growth_Rate_%",
+            size="Performance_Index", color="Category",
+            title="Capital vs Momentum Correlation Matrix",
+            hover_name="Entity_Name", color_discrete_sequence=px.colors.sequential.YlOrBr[3:]
+        )
+        fig_scatter.update_layout(plot_bgcolor="rgba(0,0,0,0)", paper_bgcolor="rgba(0,0,0,0)")
+        st.plotly_chart(fig_scatter, use_container_width=True)
+        
+    st.markdown("<hr>", unsafe_allow_html=True)
+    
+    m_col1, m_col2, m_col3, m_col4 = st.columns(4)
+    with m_col1:
+        st.markdown(f'<div class="metric-box"><span style="color: #8B4513; font-weight:700;">TOTAL ENTERPRISE ASSETS</span><br><h2 style="margin:5px 0;">{len(df)} Units</h2></div>', unsafe_allow_html=True)
+    with m_col2:
+        st.markdown(f'<div class="metric-box"><span style="color: #8B4513; font-weight:700;">AGGREGATE CAPITAL</span><br><h2 style="margin:5px 0;">An ₹ {df["Investment_Cr"].sum():,.1f} Cr</h2></div>', unsafe_allow_html=True)
+    with m_col3:
+        st.markdown(f'<div class="metric-box"><span style="color: #8B4513; font-weight:700;">PEAK MOMENTUM</span><br><h2 style="margin:5px 0;">{df["Growth_Rate_%"].max()}%</h2></div>', unsafe_allow_html=True)
+    with m_col4:
+        st.markdown(f'<div class="metric-box"><span style="color: #8B4513; font-weight:700;">MEAN PERFORMANCE</span><br><h2 style="margin:5px 0;">{df["Performance_Index"].mean():.1f}</h2></div>', unsafe_allow_html=True)
+        
+    st.markdown("<br>", unsafe_allow_html=True)
+    
+    if data['insights']:
+        st.markdown("<h3 style='color: #8B4513;'>STRATEGIC INSIGHTS</h3>", unsafe_allow_html=True)
+        st.markdown('<div class="insight-card">' + data['insights'] + '</div>', unsafe_allow_html=True)
+        
+    st.markdown("<hr>", unsafe_allow_html=True)
+    st.markdown("<h3 style='color: #8B4513;'>MASTER ENTERPRISE DATASET</h3>", unsafe_allow_html=True)
+    st.dataframe(df, use_container_width=True, hide_index=True)
+    st.download_button(label="DOWNLOAD LOAD-READY CSV", data=df.to_csv(index=False), file_name=f"aegis_master.csv", mime="text/csv")
